@@ -41,7 +41,7 @@ export default function DeliverySection({ round, onComplete }: DeliverySectionPr
       try {
         // Load config with current totals
         const configRes = await axios.get(
-          `${import.meta.env.VITE_BACKEND_URL}/api/delivery-config`
+          `${import.meta.env.VITE_BACKEND_URL_DATA}/api/delivery-config`
         );
         setConfig(configRes.data);
 
@@ -83,7 +83,7 @@ export default function DeliverySection({ round, onComplete }: DeliverySectionPr
     const calculate = async () => {
       try {
         const res = await axios.post(
-          `${import.meta.env.VITE_BACKEND_URL}/api/step-four/calculate`,
+          `${import.meta.env.VITE_BACKEND_URL_DATA}/api/step-four/calculate`,
           {
             deliveryFleet: {
               ownFleet,
@@ -143,7 +143,7 @@ export default function DeliverySection({ round, onComplete }: DeliverySectionPr
       setError(null);
 
       await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/step-four/save`,
+        `${import.meta.env.VITE_BACKEND_URL_DATA}/api/step-four/save`,
         {
           userId: localStorage.getItem("userId"),
           simulationId: localStorage.getItem("simulationId"),

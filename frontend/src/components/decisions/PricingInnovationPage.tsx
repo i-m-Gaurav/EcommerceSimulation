@@ -20,7 +20,7 @@ export default function PricingInnovationPage({ round, onComplete }: any) {
   /* ================= LOAD DATA ================= */
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/api/pricing/categories`)
+      .get(`${import.meta.env.VITE_BACKEND_URL_DATA}/api/pricing/categories`)
       .then(res => {
         setCategories(
           res.data.map((c: any) => ({
@@ -33,7 +33,7 @@ export default function PricingInnovationPage({ round, onComplete }: any) {
       });
 
     axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/api/pricing/config`)
+      .get(`${import.meta.env.VITE_BACKEND_URL_DATA}/api/pricing/config`)
       .then(res => {
         setFeatures(res.data.features);
         setConfig(res.data.config);
@@ -90,7 +90,7 @@ const pricingCategoriesData = pricingCategories.map(cat => {
 
 
   await axios.post(
-    `${import.meta.env.VITE_BACKEND_URL}/api/pricing/save`,
+    `${import.meta.env.VITE_BACKEND_URL_DATA}/api/pricing/save`,
     {
       userId: localStorage.getItem("userId"),
       simulationId: localStorage.getItem("simulationId"),

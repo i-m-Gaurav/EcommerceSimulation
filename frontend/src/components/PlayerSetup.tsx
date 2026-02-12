@@ -66,7 +66,7 @@ export default function PlayerSetup({ onComplete }: PlayerSetupProps) {
     const fetchSimulations = async () => {
       try {
         const { data } = await axios.get(
-          `${import.meta.env.VITE_BACKEND_URL}/api/simulation/list`
+          `${import.meta.env.VITE_BACKEND_URL_DATA}/api/simulation/list`
         );
         setSimulations(Array.isArray(data) ? data : []);
       } catch (e: any) {
@@ -85,7 +85,7 @@ export default function PlayerSetup({ onComplete }: PlayerSetupProps) {
     const fetchGroups = async () => {
       try {
         const { data } = await axios.get(
-          `${import.meta.env.VITE_BACKEND_URL}/api/group/by-simulation/${selectedSimulation}`
+          `${import.meta.env.VITE_BACKEND_URL_DATA}/api/group/by-simulation/${selectedSimulation}`
         );
         setGroups(Array.isArray(data) ? data : []);
       } catch (e: any) {

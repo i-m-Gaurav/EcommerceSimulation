@@ -41,7 +41,7 @@ export default function MarketingSection({ round, onComplete }: MarketingSection
     const load = async () => {
       try {
         const { data } = await axios.get(
-          `${import.meta.env.VITE_BACKEND_URL}/api/marketing-config`
+          `${import.meta.env.VITE_BACKEND_URL_DATA}/api/marketing-config`
         );
 
         console.log("Raw API response:", data);
@@ -137,7 +137,7 @@ export default function MarketingSection({ round, onComplete }: MarketingSection
 
     axios
       .post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/step-eight/calculate`,
+        `${import.meta.env.VITE_BACKEND_URL_DATA}/api/step-eight/calculate`,
         state
       )
       .then(res => setImpact(res.data))
@@ -148,7 +148,7 @@ export default function MarketingSection({ round, onComplete }: MarketingSection
     setSaving(true);
 
     await axios.post(
-      `${import.meta.env.VITE_BACKEND_URL}/api/step-eight/save`,
+      `${import.meta.env.VITE_BACKEND_URL_DATA}/api/step-eight/save`,
       {
         userId: localStorage.getItem("userId"),
         simulationId: localStorage.getItem("simulationId"),

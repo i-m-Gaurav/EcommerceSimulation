@@ -21,7 +21,7 @@ export default function TechnologySection({ round, onComplete }: TechnologySecti
   useEffect(() => {
     const load = async () => {
       const { data } = await axios.get(
-        `${import.meta.env.VITE_BACKEND_URL}/api/technology-config`
+        `${import.meta.env.VITE_BACKEND_URL_DATA}/api/technology-config`
       );
       setConfig(data);
 
@@ -69,7 +69,7 @@ export default function TechnologySection({ round, onComplete }: TechnologySecti
 
     const calculate = async () => {
       const { data } = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/step-five/calculate`,
+        `${import.meta.env.VITE_BACKEND_URL_DATA}/api/step-five/calculate`,
         {
           ...selections,
           websiteBudget
@@ -89,7 +89,7 @@ export default function TechnologySection({ round, onComplete }: TechnologySecti
   const handleSave = async () => {
     setSaving(true);
     await axios.post(
-      `${import.meta.env.VITE_BACKEND_URL}/api/step-five/save`,
+      `${import.meta.env.VITE_BACKEND_URL_DATA}/api/step-five/save`,
       {
         userId: localStorage.getItem("userId"),
         simulationId: localStorage.getItem("simulationId"),

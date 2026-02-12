@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE = `${import.meta.env.VITE_BACKEND_URL}/api`;
+const API_BASE = `${import.meta.env.VITE_BACKEND_URL_DATA}/api`;
 
 export const createSimulation = async (name: string, totalRounds: number) => {
   const res = await axios.post(`${API_BASE}/simulation/create`, {

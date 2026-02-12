@@ -50,7 +50,7 @@ export default function ProductCategoriesSection({
     const fetchAll = async () => {
       try {
         const catRes = await axios.get(
-          `${import.meta.env.VITE_BACKEND_URL}/api/step-two/categories`
+          `${import.meta.env.VITE_BACKEND_URL_DATA}/api/step-two/categories`
         );
 
         const fetchedCategories = catRes.data || [];
@@ -116,7 +116,7 @@ export default function ProductCategoriesSection({
       setError(null);
 
       await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/step-two/save`,
+        `${import.meta.env.VITE_BACKEND_URL_DATA}/api/step-two/save`,
         {
           userId: localStorage.getItem('userId'),
           simulationId: localStorage.getItem('simulationId'),

@@ -24,7 +24,7 @@ export default function BusinessModelSection({ onComplete }: BusinessModelSectio
       try {
         setLoading(true);
         setError(null);
-        const { data } = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/step-one/options`);
+        const { data } = await axios.get(`${import.meta.env.VITE_BACKEND_URL_DATA}/api/step-one/options`);
         setBusinessModels(data?.businessModels ?? []);
         setMarketPositions(data?.marketPositions ?? []);
       } catch (err) {
@@ -59,7 +59,7 @@ export default function BusinessModelSection({ onComplete }: BusinessModelSectio
       const simulationId = localStorage.getItem('simulationId');
 
       await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/step-one/save`,
+        `${import.meta.env.VITE_BACKEND_URL_DATA}/api/step-one/save`,
         {
           userId,
           simulationId,
