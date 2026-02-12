@@ -12,7 +12,7 @@ export default function SourcingSection({ round, onComplete }: any) {
 
   useEffect(() => {
     axios
-      .get("https://sim-quick-commerce-backend.onrender.com/api/suppliers")
+      .get(`${import.meta.env.VITE_BACKEND_URL}/api/suppliers`)
       .then(res => setSuppliers(res.data))
       .catch(() => setError("Failed to load suppliers"));
   }, []);
@@ -28,7 +28,7 @@ export default function SourcingSection({ round, onComplete }: any) {
       setError(null);
 
       await axios.post(
-        "https://sim-quick-commerce-backend.onrender.com/api/selection/save",
+        `${import.meta.env.VITE_BACKEND_URL}/api/selection/save`,
         {
           userId: localStorage.getItem("userId"),
           simulationId: localStorage.getItem("simulationId"),

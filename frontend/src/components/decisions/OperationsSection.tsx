@@ -5,7 +5,12 @@ import { getHRData, saveHRConfig } from "../../api/hrApi";
 import EmployeeCard from "../EmployeeCard";
 import Slider from "../Slider";
 
-export default function OperationsSection() {
+interface OperationsSectionProps {
+  round: number;
+  onComplete: (data: any) => void;
+}
+
+export default function OperationsSection({ round, onComplete }: OperationsSectionProps) {
   type Employee = {
     _id: string;
     name: string;
@@ -71,6 +76,14 @@ export default function OperationsSection() {
       });
 
       console.log(res.data.summary);
+      onComplete({
+        hr: {
+          selectedEmployees,
+          trainingBudgetPerEmployee: training,
+          bonusPerEmployee: bonus,
+          roundNumber: round // Pass round to be consistent and use the prop
+        }
+      });
     } catch (error) {
       console.error("Failed to save HR config", error);
     } finally {

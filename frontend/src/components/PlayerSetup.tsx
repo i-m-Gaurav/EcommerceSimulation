@@ -37,12 +37,7 @@ export default function PlayerSetup({ onComplete }: PlayerSetupProps) {
       setLoading(true);
       setError(null);
 
-      // const res = await axios.post(
-      //   "https://sim-quick-commerce-backend.onrender.com/api/auth/login",
-      //   { username, password }
-      // );
-
-      const res = await axios.post("http://localhost:5000/api/auth/login", {
+      const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/login`, {
         username,
         password,
       });
@@ -71,7 +66,7 @@ export default function PlayerSetup({ onComplete }: PlayerSetupProps) {
     const fetchSimulations = async () => {
       try {
         const { data } = await axios.get(
-          "https://sim-quick-commerce-backend.onrender.com/api/simulation/list"
+          `${import.meta.env.VITE_BACKEND_URL}/api/simulation/list`
         );
         setSimulations(Array.isArray(data) ? data : []);
       } catch (e: any) {
@@ -90,7 +85,7 @@ export default function PlayerSetup({ onComplete }: PlayerSetupProps) {
     const fetchGroups = async () => {
       try {
         const { data } = await axios.get(
-          `https://sim-quick-commerce-backend.onrender.com/api/group/by-simulation/${selectedSimulation}`
+          `${import.meta.env.VITE_BACKEND_URL}/api/group/by-simulation/${selectedSimulation}`
         );
         setGroups(Array.isArray(data) ? data : []);
       } catch (e: any) {

@@ -64,7 +64,7 @@ export default function AnalysisPage() {
   useEffect(() => {
     const loadCategories = async () => {
       const res = await axios.get(
-        "https://sim-quick-commerce-backend.onrender.com/api/step-two/categories"
+        `${import.meta.env.VITE_BACKEND_URL}/api/step-two/categories`
       );
       const all: Category[] = res.data || [];
       const raw = localStorage.getItem(SELECTION_KEY);
@@ -88,7 +88,7 @@ export default function AnalysisPage() {
     const loadAnalysis = async () => {
       try {
         const res = await axios.get(
-          `https://sim-quick-commerce-backend.onrender.com/api/analysis/${activeCategory.name}/${activeSegment}`
+          `${import.meta.env.VITE_BACKEND_URL}/api/analysis/${activeCategory.name}/${activeSegment}`
         );
         setAnalysisData(res.data.analysis || res.data);
       } catch (error) {

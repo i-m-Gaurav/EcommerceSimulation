@@ -3,7 +3,7 @@
 import axios from "axios";
 
 export const getHRData = () =>
-  axios.get("https://sim-quick-commerce-backend.onrender.com/api/hr/hr");
+  axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/hr/hr`);
 
 export const saveHRConfig = (data: any) =>
-  axios.post("https://sim-quick-commerce-backend.onrender.com/api/hr/hr/save", data);
+  axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/hr/hr/save`, data);
